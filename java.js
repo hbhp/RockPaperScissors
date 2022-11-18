@@ -1,5 +1,3 @@
-const computerSelection = getComputerChoice();
-
 function getComputerChoice(){
     let num1 = Math.random();
     if (num1 <= 0.333){
@@ -10,13 +8,10 @@ function getComputerChoice(){
         return 'SCISSORS';
     }
 }
+let playerSelection = playerInput.toUpperCase();
 
 function playRound (computerSelection, playerSelection){
-    if (computerSelection === 'PAPER' && playerSelection === 'PAPER'){
-        return 'A tie!';
-    } else if (computerSelection === 'ROCK' && playerSelection === 'ROCK'){
-        return 'A tie!';
-    } else if (computerSelection === 'SCISSORS' && playerSelection === 'SCISSORS'){
+    if (computerSelection === playerSelection){
         return 'A tie!';
     } else if (computerSelection === 'PAPER' && playerSelection === 'ROCK'){
         return 'Computer wins! Paper beats rock!';
