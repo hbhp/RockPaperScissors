@@ -1,7 +1,12 @@
 function getComputerChoice(){
-    let compArray = ('Rock','Paper','Scissors');
-    let randomChoice = Math.floor(Math.random()*compArray.length);
-    return randomChoice;
+    let num1 = Math.random();
+    if (num1 <= 0.333){
+        return 'ROCK';
+    } else if (num1 >0.333 && num1 <=0.666) {
+        return 'PAPER';
+    } else if (num1 > 0.666) {
+        return 'SCISSORS';
+    }
 }
 
 //let getComputerChoice = () => {  
