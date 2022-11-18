@@ -1,17 +1,17 @@
+let computerSelection ='';
+
 function getComputerChoice(){
-    let computerSelection = Math.random();
-    if (computerSelection <= 0.333){
+    let num1 = Math.random();
+    if (num1 <= 0.333){
+        let computerSelection ='ROCK';
         return 'ROCK';
-    } else if (computerSelection >0.333 && computerSelection <=0.666) {
+    } else if (num1 >0.333 && num1 <=0.666) {
+        let computerSelection = 'PAPER';
         return 'PAPER';
-    } else if (computerSelection > 0.666) {
+    } else if (num1 > 0.666) {
+        let computerSelection = 'SCISSORS'
         return 'SCISSORS';
     }
-}
-
-function playerSelection(){
-    const ask = prompt ('Rock, Paper or Scissors?').toUpperCase;
-    return ask;
 }
 
 function playRound (computerSelection, playerSelection){
