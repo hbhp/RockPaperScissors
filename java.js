@@ -1,22 +1,23 @@
-let computerSelection ='';
+const computerSelection = getComputerChoice();
 
 function getComputerChoice(){
     let num1 = Math.random();
     if (num1 <= 0.333){
-        let computerSelection ='ROCK';
         return 'ROCK';
     } else if (num1 >0.333 && num1 <=0.666) {
-        let computerSelection = 'PAPER';
         return 'PAPER';
     } else if (num1 > 0.666) {
-        let computerSelection = 'SCISSORS'
         return 'SCISSORS';
     }
 }
 
 function playRound (computerSelection, playerSelection){
-    if (computerSelection === playerSelection){
-        return 'It\'s a tie! Try again!';
+    if (computerSelection === 'PAPER' && playerSelection === 'PAPER'){
+        return 'A tie!';
+    } else if (computerSelection === 'ROCK' && playerSelection === 'ROCK'){
+        return 'A tie!';
+    } else if (computerSelection === 'SCISSORS' && playerSelection === 'SCISSORS'){
+        return 'A tie!';
     } else if (computerSelection === 'PAPER' && playerSelection === 'ROCK'){
         return 'Computer wins! Paper beats rock!';
     } else if (computerSelection === 'PAPER' && playerSelection === 'SCISSORS'){
@@ -32,10 +33,4 @@ function playRound (computerSelection, playerSelection){
     } else () => {
         return 'Something when wrong, let\'s try again!';
     }
-}
-
-function declaration (){
-    //take playerSelection
-    //take getComputerChoice (or alternative result variable)
-    //if/else
 }
