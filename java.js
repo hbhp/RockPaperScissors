@@ -1,5 +1,3 @@
-const playerSelection = (prompt("Which weapon do you choose: ROCK, PAPER, SCISSORS?"));
-const computerSelection = getComputerChoice();
 let computerScore = 0; 
 let playerScore = 0;
 let roundCount= 0;
@@ -15,49 +13,42 @@ function getComputerChoice(){ //This works fine
     }
 }
 
-function playRound (computerSelection, playerSelection){ //This works fine
-    if (computerSelection === playerSelection){
-        console.log ('A tie!');
+function getPlayerChoice(){
+    let input = (prompt("Which weapon do you choose: ROCK, PAPER, SCISSORS?"));
+    return input;
+}
+
+function playRound(){
+    const playerSelection = getPlayerChoice();
+    const computerSelection = getComputerChoice();
+    roundCount++;
+    if (computerSelection === playerSelection.toUpperCase){ // ONLY PROBLEM NOW IS IT WON'T TIE!!!
+        console.log ('A tie! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else if (computerSelection === 'PAPER' && playerSelection.toUpperCase() === 'ROCK'){
-        console.log ('Computer wins! Paper beats rock!');
+        computerScore++
+        console.log ('The computer chose paper! Computer wins! Paper beats rock! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else if (computerSelection === 'PAPER' && playerSelection.toUpperCase() === 'SCISSORS'){
-        console.log ('You win! Scissors beats paper!');
+        playerScore++
+        console.log ('The computer chose paper! You win! Scissors beats paper! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else if (computerSelection === 'ROCK' && playerSelection.toUpperCase() === 'PAPER'){
-        console.log ('You win Paper beats rock!');
+        playerScore++
+        console.log ('The computer chose rock! You win! Paper beats rock! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else if (computerSelection === 'ROCK' && playerSelection.toUpperCase() === 'SCISSORS'){
-        console.log ('Computer wins! Rock beats scissors!');
+        computerScore++
+        console.log ('The computer chose rock! Computer wins! Rock beats scissors! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else if (computerSelection === 'SCISSORS' && playerSelection.toUpperCase() === 'ROCK'){
-        console.log ('You win! Rock beats scissors!');
+        computerScore++
+        console.log ('The computer chose scissors! You win! Rock beats scissors! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else if (computerSelection === 'SCISSORS' && playerSelection.toUpperCase() === 'PAPER'){
-        console.log ('Computer wins! Scissors beats paper!');
+        computerScore++
+        console.log ('The computer chose scissors! Computer wins! Scissors beats paper! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else {
-        console.log ('Something when wrong, let\'s try again!');
+        console.log ('Something went wrong, let\'s try again!');
     }
 }
 
-function game(){ //This isn't yet working
+function game(){
     for (let i = 0; i < 5; i++) {
-        getComputerChoice;
-        playRound;
-        if ((computerSelection === playerSelection)) {
-            console.log ('This is round ' + i + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
-        }  else if  (computerSelection === 'PAPER' && playerSelection.toUpperCase() === 'ROCK'){
-            computerScore++;
-            console.log ('This is round ' + i + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
-        } else if (computerSelection === 'ROCK' && playerSelection.toUpperCase() === 'SCISSORS'){
-            computerScore++;
-            console.log ('This is round ' + i + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
-        } else if (computerSelection === 'SCISSORS' && playerSelection.toUpperCase() === 'PAPER'){
-            computerScore++;
-            console.log ('This is round ' + i + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
-        } else if (computerSelection === 'PAPER' && playerSelection.toUpperCase() === 'SCISSORS'){
-            playerScore++;
-            console.log ('This is round ' + i + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
-        } else if (computerSelection === 'ROCK' && playerSelection.toUpperCase() === 'PAPER'){
-            playerScore++;
-            console.log ('This is round ' + i + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
-            playerScore++;
-            console.log ('This is round ' + i + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
-        } 
-    }
+        playRound();
+    } 
 }
