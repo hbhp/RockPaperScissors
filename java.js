@@ -23,7 +23,7 @@ function playRound(){
     const computerSelection = getComputerChoice();
     roundCount++;
     if (computerSelection === playerSelection.toUpperCase){ // ONLY PROBLEM NOW IS IT WON'T TIE!!!
-        console.log ('A tie! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
+        console.log ('A tie! No points awarded. This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else if (computerSelection === 'PAPER' && playerSelection.toUpperCase() === 'ROCK'){
         computerScore++
         console.log ('The computer chose paper! Computer wins! Paper beats rock! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
