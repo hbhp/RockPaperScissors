@@ -22,7 +22,7 @@ function playRound(){
     const playerSelection = getPlayerChoice();
     const computerSelection = getComputerChoice();
     roundCount++;
-    if (computerSelection === playerSelection.toUpperCase){ // ONLY PROBLEM NOW IS IT WON'T TIE!!!
+    if (computerSelection === playerSelection.toUpperCase()){
         console.log ('A tie! No points awarded. This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
     } else if (computerSelection === 'PAPER' && playerSelection.toUpperCase() === 'ROCK'){
         computerScore++
@@ -51,4 +51,13 @@ function game(){
     for (let i = 0; i < 5; i++) {
         playRound();
     } 
+    if (playerScore > computerScore){
+        console.log('You win!')
+    } else if (playerScore < computerScore){
+        console.log('Computer Wins!')
+    } else if (playerScore === computerScore){
+        console.log ('It\'s a tie!')
+    } else {
+        console.log ('Whoops - Something went wrong!')
+    }
 }
