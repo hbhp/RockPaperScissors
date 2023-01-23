@@ -1,8 +1,27 @@
-let computerScore = 0; 
+let computerScore = 0;                                          //SETTING UP SCORES
+//    document.getElementById('computerScore').innerHTML = computerScore;
 let playerScore = 0;
+//    document.getElementById('playerScore').innerHTML = playerScore;
 let roundCount= 0;
+//    document.getElementById('roundCount').innerHTML = roundCount;
 
-function getComputerChoice(){ //This works fine
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    roundCount++
+    const computerSelection = getComputerChoice();
+    const playerSelection = `${button.className}`;
+    playRound(playerSelection,computerSelection)
+    document.getElementById('playerSelection').innerHTML = playerSelection;
+    document.getElementById('computerSelection').innerHTML = computerSelection;
+    document.getElementById('roundCount').innerHTML = roundCount;
+    document.getElementById('playerScore').innerHTML = playerScore;
+    document.getElementById('computerScore').innerHTML = computerScore;
+    winnerCheck (playerScore,computerScore);
+  });
+});
+
+function getComputerChoice(){                                   //GETS COMPUTER'S CHOICE
     let num1 = Math.random();
     if (num1 <= 0.333){
         return 'ROCK';
@@ -13,51 +32,42 @@ function getComputerChoice(){ //This works fine
     }
 }
 
-function getPlayerChoice(){
-    let input = (prompt("Which weapon do you choose: ROCK, PAPER, SCISSORS?"));
-    return input;
-}
-
-function playRound(){
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
-    roundCount++;
+function playRound(playerSelection,computerSelection){                                           //PLAY'S A ROUND
     if (computerSelection === playerSelection.toUpperCase()){
-        console.log ('A tie! No points awarded. This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
+        document.getElementById('result').innerHTML = 'A tie! No points awarded';
     } else if (computerSelection === 'PAPER' && playerSelection.toUpperCase() === 'ROCK'){
         computerScore++
-        console.log ('The computer chose paper! Computer wins! Paper beats rock! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
+        document.getElementById('result').innerHTML ='The computer chose paper! Computer wins! Paper beats rock!';
     } else if (computerSelection === 'PAPER' && playerSelection.toUpperCase() === 'SCISSORS'){
         playerScore++
-        console.log ('The computer chose paper! You win! Scissors beats paper! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
+        document.getElementById('result').innerHTML ='The computer chose paper! You win! Scissors beats paper!';
     } else if (computerSelection === 'ROCK' && playerSelection.toUpperCase() === 'PAPER'){
         playerScore++
-        console.log ('The computer chose rock! You win! Paper beats rock! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
+        document.getElementById('result').innerHTML = 'The computer chose rock! You win! Paper beats rock!';
     } else if (computerSelection === 'ROCK' && playerSelection.toUpperCase() === 'SCISSORS'){
         computerScore++
-        console.log ('The computer chose rock! Computer wins! Rock beats scissors! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
+        document.getElementById('result').innerHTML ='The computer chose rock! Computer wins! Rock beats scissors!';
     } else if (computerSelection === 'SCISSORS' && playerSelection.toUpperCase() === 'ROCK'){
         computerScore++
-        console.log ('The computer chose scissors! You win! Rock beats scissors! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
+        document.getElementById('result').innerHTML ='The computer chose scissors! You win!';
     } else if (computerSelection === 'SCISSORS' && playerSelection.toUpperCase() === 'PAPER'){
         computerScore++
-        console.log ('The computer chose scissors! Computer wins! Scissors beats paper! This is round ' + roundCount + '. The computer\'s score is ' + computerScore + '. Your score is ' + playerScore +'.');
+        document.getElementById('result').innerHTML ='The computer chose scissors! Computer wins!';
     } else {
-        console.log ('Something went wrong, let\'s try again!');
+        document.getElementById('result').innerHTML ='Something went wrong, let\'s try again!';
     }
 }
 
-function game(){
-    for (let i = 0; i < 5; i++) {
-        playRound();
-    } 
-    if (playerScore > computerScore){
-        console.log('You win!')
-    } else if (playerScore < computerScore){
-        console.log('Computer Wins!')
-    } else if (playerScore === computerScore){
-        console.log ('It\'s a tie!')
-    } else {
-        console.log ('Whoops - Something went wrong!')
+function winnerCheck (playerScore,computerScore){
+    if (playerScore === 5){
+        document.getElementById('winner').innerHTML ='YOU WIN!';
+    }
+    else if (computerScore === 5){
+        document.getElementById('winner').innerHTML ='YOU LOSE!';
+    }
+    else {
+        return;
     }
 }
+
+
